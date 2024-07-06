@@ -1,113 +1,237 @@
-import Image from "next/image";
+import { DogIcon } from "@/components/DogIcon";
+import { FanIcon } from "@/components/FanIcon";
+import { GiftIcon } from "@/components/GiftIcon";
+import { PawPrintIcon } from "@/components/PawPrintIcon";
+import { SchoolIcon } from "@/components/SchoolIcon";
+import { VoteIcon } from "@/components/VoteIcon";
+import { getLast3Pets } from "@/lib/api";
+import Image from "next/image"
+import Link from "next/link"
 
-export default function Home() {
+interface Pet {
+  sys: {
+    id: string;
+  };
+  name: string;
+  slug: string;
+  age: string;
+  description: string;
+  mediaCollection: {
+    items: {
+      url: string;
+    }[];
+  };
+}
+
+export default async function Home() {
+  const pets = await getLast3Pets();
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
+    <div className="flex flex-col min-h-dvh">
+      <header className="px-4 lg:px-6 h-14 flex items-center bg-primary text-primary-foreground">
+        <Link href="#" className="flex items-center justify-center" prefetch={false}>
+          <PawPrintIcon className="size-6 mr-2" />
+          <span className="font-bold text-lg">Patas da Esperança</span>
+        </Link>
+        <nav className="ml-auto flex gap-4 sm:gap-6">
+          <Link href="#" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
+            Adotar
+          </Link>
+          <Link href="#" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
+            Voluntariar
+          </Link>
+          <Link href="#" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
+            Doar
+          </Link>
+          <Link href="#" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
+            Sobre
+          </Link>
+        </nav>
+      </header>
+      <main className="flex-1">
+        <section className="w-full pt-12 md:pt-24 lg:pt-32">
+          <div className="container px-4 md:px-6 grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
             <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+              src="https://images.unsplash.com/photo-1594004844563-536a03a6e532?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              width="550"
+              height="550"
+              alt="Rescue Animals"
+              className="mx-auto w-full aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last lg:aspect-square"
             />
-          </a>
-        </div>
-      </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
+            <div className="flex flex-col justify-center space-y-4">
+              <div className="space-y-2">
+                <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
+                  Dando uma Segunda Chance aos Animais Resgatados
+                </h1>
+                <p className="max-w-[600px] text-muted-foreground md:text-xl">
+                  No Patas da Esperança, nossa missão é fornecer um ambiente seguro e amoroso para animais abandonados e abusados, e encontrar lares permanentes para eles.
+                </p>
+              </div>
+              <div className="flex flex-col gap-2 min-[400px]:flex-row">
+                <Link
+                  href="#"
+                  className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+                  prefetch={false}
+                >
+                  Doe Agora
+                </Link>
+                <Link
+                  href="#"
+                  className="inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-8 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+                  prefetch={false}
+                >
+                  Adote um Pet
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-muted">
+          <div className="container px-4 md:px-6 space-y-12">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+              <div className="space-y-2">
+                <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground">
+                  Últimos Resgatados
+                </div>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Conheça Nossos Animais para Adoção</h2>
+                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                  Explore nossa seleção de animais resgatados que estão em busca de lares permanentes. Cada um tem uma história única e está esperando para trazer alegria para sua vida.
+                </p>
+              </div>
+            </div>
+            <div className="mx-auto grid items-start gap-8 sm:max-w-4xl sm:grid-cols-2 md:gap-12 lg:max-w-5xl lg:grid-cols-3">
+              {pets.map((pet: Pet) => (
+                <div key={pet.sys.id} className="grid gap-1">
+                  <Image
+                    src={pet.mediaCollection.items[0].url}
+                    width="300"
+                    height="300"
+                    alt={pet.name}
+                    className="aspect-square overflow-hidden rounded-lg object-cover"
+                  />
+                  <h3 className="text-lg font-bold">{pet.name} - {pet.age}</h3>
+                  <p className="text-sm text-muted-foreground line-clamp-4">{pet.description}</p>
+                  <Link
+                    href="#"
+                    className="inline-flex h-8 items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+                    prefetch={false}
+                  >
+                    Adote {pet.name}
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+        <section className="w-full py-12 md:py-24 lg:py-32">
+          <div className="container px-4 md:px-6 space-y-12">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+              <div className="space-y-2">
+                <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground">
+                  Envolva-se
+                </div>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Maneiras de Apoiar Nossa Missão</h2>
+                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                  Existem muitas maneiras de ajudar a fazer a diferença na vida dos animais resgatados. Seja voluntário, ofereça lar temporário ou doe para apoiar nossos esforços.
+                </p>
+              </div>
+            </div>
+            <div className="mx-auto grid items-start gap-8 sm:max-w-4xl sm:grid-cols-2 md:gap-12 lg:max-w-5xl lg:grid-cols-3">
+              <div className="grid gap-1">
+                <VoteIcon className="w-12 h-12 text-primary" />
+                <h3 className="text-lg font-bold">Voluntário</h3>
+                <p className="text-sm text-muted-foreground">
+                  Junte-se à nossa equipe de voluntários dedicados e ajude a cuidar dos nossos animais resgatados.
+                </p>
+                <Link
+                  href="#"
+                  className="inline-flex h-8 items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+                  prefetch={false}
+                >
+                  Saiba Mais
+                </Link>
+              </div>
+              <div className="grid gap-1">
+                <FanIcon className="w-12 h-12 text-primary" />
+                <h3 className="text-lg font-bold">Lar Temporário</h3>
+                <p className="text-sm text-muted-foreground">Ofereça um lar temporário para um animal resgatado e ajude-o a se preparar para a adoção.</p>
+                <Link
+                  href="#"
+                  className="inline-flex h-8 items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+                  prefetch={false}
+                >
+                  Saiba Mais
+                </Link>
+              </div>
+              <div className="grid gap-1">
+                <GiftIcon className="w-12 h-12 text-primary" />
+                <h3 className="text-lg font-bold">Doação</h3>
+                <p className="text-sm text-muted-foreground">
+                  Suas doações nos ajudam a fornecer cuidados médicos, alimentação e abrigo para os animais.
+                </p>
+                <Link
+                  href="#"
+                  className="inline-flex h-8 items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+                  prefetch={false}
+                >
+                  Donate Now
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-muted">
+          <div className="container px-4 md:px-6 space-y-12">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+              <div className="space-y-2">
+                <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground">
+                  Nosso Impacto
+                </div>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                  Fazendo a Diferença, Um Resgate de Cada Vez
+                </h2>
+                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                  Desde nossa fundação, resgatamos e reabilitamos centenas de animais, fornecemos cuidados veterinários e educamos a comunidade sobre a posse responsável de animais de estimação.
+                </p>
+              </div>
+            </div>
+            <div className="mx-auto grid items-start gap-8 sm:max-w-4xl sm:grid-cols-2 md:gap-12 lg:max-w-5xl lg:grid-cols-3">
+              <div className="grid gap-1">
+                <PawPrintIcon className="w-12 h-12 text-primary" />
+                <h3 className="text-lg font-bold">Resgate & Reabilitação</h3>
+                <p className="text-sm text-muted-foreground">
+                  Resgatamos e encontramos lares amorosos para mais de 500 animais necessitados.
+                </p>
+              </div>
+              <div className="grid gap-1">
+                <DogIcon className="w-12 h-12 text-primary" />
+                <h3 className="text-lg font-bold">Cuidados Veterinários</h3>
+                <p className="text-sm text-muted-foreground">
+                  Nossa clínica veterinária no local fornece cuidados de alta qualidade para nossos animais resgatados.
+                </p>
+              </div>
+              <div className="grid gap-1">
+                <SchoolIcon className="w-12 h-12 text-primary" />
+                <h3 className="text-lg font-bold">Educação Comunitária</h3>
+                <p className="text-sm text-muted-foreground">
+                  Realizamos workshops e eventos para promover a posse responsável de animais de estimação e o bem-estar animal.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
+        <p className="text-xs text-muted-foreground">&copy; 2024 Patas da Esperança. Todos os direitos reservados.</p>
+        <nav className="sm:ml-auto flex gap-4 sm:gap-6">
+          <Link href="#" className="text-xs hover:underline underline-offset-4" prefetch={false}>
+            Política de Privacidade
+          </Link>
+          <Link href="#" className="text-xs hover:underline underline-offset-4" prefetch={false}>
+            Termos de Serviço
+          </Link>
+        </nav>
+      </footer>
+    </div>
+  )
 }
