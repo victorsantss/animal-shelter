@@ -1,6 +1,8 @@
 import { Inter } from 'next/font/google'
 import { cn } from '@/lib/utils'
 import './globals.css'
+import { Footer } from '@/components/Footer'
+import { Header } from '@/components/Header'
 
 const fontHeading = Inter({
   subsets: ['latin'],
@@ -26,7 +28,9 @@ export default function Layout({ children }: Readonly<{
           fontBody.variable
         )}
       >
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   )

@@ -1,6 +1,7 @@
 import { DogIcon } from "@/components/DogIcon";
 import { FanIcon } from "@/components/FanIcon";
 import { GiftIcon } from "@/components/GiftIcon";
+import { HomeHero } from "@/components/HomeHero";
 import { PawPrintIcon } from "@/components/PawPrintIcon";
 import { SchoolIcon } from "@/components/SchoolIcon";
 import { VoteIcon } from "@/components/VoteIcon";
@@ -8,7 +9,7 @@ import { getLast3Pets } from "@/lib/api";
 import Image from "next/image"
 import Link from "next/link"
 
-interface Pet {
+export interface Pet {
   sys: {
     id: string;
   };
@@ -16,8 +17,11 @@ interface Pet {
   slug: string;
   age: string;
   description: string;
+  size: string;
+  type: string;
   mediaCollection: {
     items: {
+      title: string;
       url: string;
     }[];
   };
@@ -28,64 +32,8 @@ export default async function Home() {
 
   return (
     <div className="flex flex-col min-h-dvh">
-      <header className="px-4 lg:px-6 h-14 flex items-center bg-primary text-primary-foreground">
-        <Link href="#" className="flex items-center justify-center" prefetch={false}>
-          <PawPrintIcon className="size-6 mr-2" />
-          <span className="font-bold text-lg">Patas da Esperança</span>
-        </Link>
-        <nav className="ml-auto flex gap-4 sm:gap-6">
-          <Link href="#" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
-            Adotar
-          </Link>
-          <Link href="#" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
-            Voluntariar
-          </Link>
-          <Link href="#" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
-            Doar
-          </Link>
-          <Link href="#" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
-            Sobre
-          </Link>
-        </nav>
-      </header>
       <main className="flex-1">
-        <section className="w-full pt-12 md:pt-24 lg:pt-32">
-          <div className="container px-4 md:px-6 grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
-            <Image
-              src="https://images.unsplash.com/photo-1594004844563-536a03a6e532?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              width="550"
-              height="550"
-              alt="Rescue Animals"
-              className="mx-auto w-full aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last lg:aspect-square"
-            />
-            <div className="flex flex-col justify-center space-y-4">
-              <div className="space-y-2">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-                  Dando uma Segunda Chance aos Animais Resgatados
-                </h1>
-                <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                  No Patas da Esperança, nossa missão é fornecer um ambiente seguro e amoroso para animais abandonados e abusados, e encontrar lares permanentes para eles.
-                </p>
-              </div>
-              <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                <Link
-                  href="#"
-                  className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-                  prefetch={false}
-                >
-                  Doe Agora
-                </Link>
-                <Link
-                  href="#"
-                  className="inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-8 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-                  prefetch={false}
-                >
-                  Adote um Pet
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
+        <HomeHero />
         <section className="w-full py-12 md:py-24 lg:py-32 bg-muted">
           <div className="container px-4 md:px-6 space-y-12">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -99,9 +47,9 @@ export default async function Home() {
                 </p>
               </div>
             </div>
-            <div className="mx-auto grid items-start gap-8 sm:max-w-4xl sm:grid-cols-2 md:gap-12 lg:max-w-5xl lg:grid-cols-3">
+            <div className="mx-auto grid gap-8 sm:max-w-4xl sm:grid-cols-2 md:gap-12 lg:max-w-5xl lg:grid-cols-3">
               {pets.map((pet: Pet) => (
-                <div key={pet.sys.id} className="grid gap-1">
+                <div key={pet.sys.id} className="flex gap-1 flex-col justify-between">
                   <Image
                     src={pet.mediaCollection.items[0].url}
                     width="300"
@@ -120,6 +68,15 @@ export default async function Home() {
                   </Link>
                 </div>
               ))}
+            </div>
+            <div className="flex justify-center">
+              <Link
+                href="/adotar"
+                className="inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-8 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 w-full md:w-1/4"
+                prefetch={false}
+              >
+                Ver Todos os Animais
+              </Link>
             </div>
           </div>
         </section>
@@ -174,7 +131,7 @@ export default async function Home() {
                   className="inline-flex h-8 items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
                   prefetch={false}
                 >
-                  Donate Now
+                  Doe Agora
                 </Link>
               </div>
             </div>
@@ -221,17 +178,6 @@ export default async function Home() {
           </div>
         </section>
       </main>
-      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
-        <p className="text-xs text-muted-foreground">&copy; 2024 Patas da Esperança. Todos os direitos reservados.</p>
-        <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-          <Link href="#" className="text-xs hover:underline underline-offset-4" prefetch={false}>
-            Política de Privacidade
-          </Link>
-          <Link href="#" className="text-xs hover:underline underline-offset-4" prefetch={false}>
-            Termos de Serviço
-          </Link>
-        </nav>
-      </footer>
     </div>
   )
 }
