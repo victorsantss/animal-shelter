@@ -3,6 +3,7 @@ import { cn } from '@/lib/utils'
 import './globals.css'
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
+import { Metadata } from 'next'
 
 const fontHeading = Inter({
   subsets: ['latin'],
@@ -15,6 +16,10 @@ const fontBody = Inter({
   display: 'swap',
   variable: '--font-body',
 })
+
+export const metadata: Metadata = {
+  title: 'Patas da Esperança',
+}
 
 export default function Layout({ children }: Readonly<{
   children: React.ReactNode;
