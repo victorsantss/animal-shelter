@@ -26,7 +26,7 @@ export default async function AdoptPage() {
                   width="300"
                   height="300"
                   alt={pet.name}
-                  className="aspect-square overflow-hidden rounded-lg object-cover"
+                  className="aspect-square overflow-hidden rounded-lg object-cover self-center"
                 />
                 <h3 className="text-lg font-bold">{pet.name} - {pet.age}</h3>
                 <p className="text-sm text-muted-foreground line-clamp-4">{pet.description}</p>

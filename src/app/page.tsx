@@ -55,12 +55,12 @@ export default async function Home() {
                     width="300"
                     height="300"
                     alt={pet.name}
-                    className="aspect-square overflow-hidden rounded-lg object-cover"
+                    className="aspect-square overflow-hidden rounded-lg object-cover self-center"
                   />
                   <h3 className="text-lg font-bold">{pet.name} - {pet.age}</h3>
                   <p className="text-sm text-muted-foreground line-clamp-4">{pet.description}</p>
                   <Link
-                    href="#"
+                    href={`/adotar/${pet.slug}`}
                     className="inline-flex h-8 items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
                     prefetch={false}
                   >
@@ -94,9 +94,11 @@ export default async function Home() {
               </div>
             </div>
             <div className="mx-auto grid items-start gap-8 sm:max-w-4xl sm:grid-cols-2 md:gap-12 lg:max-w-5xl lg:grid-cols-3">
-              <div className="grid gap-1">
-                <VoteIcon className="w-12 h-12 text-primary" />
-                <h3 className="text-lg font-bold">Voluntário</h3>
+              <div className="flex flex-col gap-1">
+                <div className="flex flex-col items-center">
+                  <VoteIcon className="w-14 h-14 text-primary" />
+                  <h3 className="text-lg font-bold">Voluntário</h3>
+                </div>
                 <p className="text-sm text-muted-foreground">
                   Junte-se à nossa equipe de voluntários dedicados e ajude a cuidar dos nossos animais resgatados.
                 </p>
@@ -108,9 +110,11 @@ export default async function Home() {
                   Saiba Mais
                 </Link>
               </div>
-              <div className="grid gap-1">
-                <FanIcon className="w-12 h-12 text-primary" />
-                <h3 className="text-lg font-bold">Lar Temporário</h3>
+              <div className="flex flex-col gap-1">
+                <div className="flex flex-col items-center">
+                  <FanIcon className="w-14 h-14 text-primary" />
+                  <h3 className="text-lg font-bold">Lar Temporário</h3>
+                </div>
                 <p className="text-sm text-muted-foreground">Ofereça um lar temporário para um animal resgatado e ajude-o a se preparar para a adoção.</p>
                 <Link
                   href="#"
@@ -120,9 +124,11 @@ export default async function Home() {
                   Saiba Mais
                 </Link>
               </div>
-              <div className="grid gap-1">
-                <GiftIcon className="w-12 h-12 text-primary" />
-                <h3 className="text-lg font-bold">Doação</h3>
+              <div className="flex flex-col gap-1">
+                <div className="flex flex-col items-center">
+                  <GiftIcon className="w-14 h-14 text-primary" />
+                  <h3 className="text-lg font-bold">Doação</h3>
+                </div>
                 <p className="text-sm text-muted-foreground">
                   Suas doações nos ajudam a fornecer cuidados médicos, alimentação e abrigo para os animais.
                 </p>
@@ -154,22 +160,28 @@ export default async function Home() {
             </div>
             <div className="mx-auto grid items-start gap-8 sm:max-w-4xl sm:grid-cols-2 md:gap-12 lg:max-w-5xl lg:grid-cols-3">
               <div className="grid gap-1">
-                <PawPrintIcon className="w-12 h-12 text-primary" />
-                <h3 className="text-lg font-bold">Resgate & Reabilitação</h3>
+                <div className="flex flex-col gap-2 items-center">
+                  <PawPrintIcon className="w-14 h-14 text-primary" />
+                  <h3 className="text-lg font-bold">Resgate & Reabilitação</h3>
+                </div>
                 <p className="text-sm text-muted-foreground">
                   Resgatamos e encontramos lares amorosos para mais de 500 animais necessitados.
                 </p>
               </div>
               <div className="grid gap-1">
-                <DogIcon className="w-12 h-12 text-primary" />
-                <h3 className="text-lg font-bold">Cuidados Veterinários</h3>
+                <div className="flex flex-col gap-2 items-center">
+                  <DogIcon className="w-14 h-14 text-primary" />
+                  <h3 className="text-lg font-bold">Cuidados Veterinários</h3>
+                </div>
                 <p className="text-sm text-muted-foreground">
                   Nossa clínica veterinária no local fornece cuidados de alta qualidade para nossos animais resgatados.
                 </p>
               </div>
               <div className="grid gap-1">
-                <SchoolIcon className="w-12 h-12 text-primary" />
-                <h3 className="text-lg font-bold">Educação Comunitária</h3>
+                <div className="flex flex-col gap-2 items-center">
+                  <SchoolIcon className="w-14 h-14 text-primary" />
+                  <h3 className="text-lg font-bold">Educação Comunitária</h3>
+                </div>
                 <p className="text-sm text-muted-foreground">
                   Realizamos workshops e eventos para promover a posse responsável de animais de estimação e o bem-estar animal.
                 </p>
