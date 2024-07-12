@@ -39,17 +39,21 @@ function extractPetEntries(fetchResponse) {
 }
 
 export async function getAllPets(
+  limit = 0,
   isDraftMode = false
 ) {
   const pets = await fetchGraphQL(
     `query {
-        petCollection(preview: ${isDraftMode ? "true" : "false"
-    }) {
-          items {
-            ${PET_GRAPHQL_FIELDS}
-          }
+      petCollection(
+        preview: ${isDraftMode ? "true" : "false"},
+        limit: ${limit}
+        ) 
+      {
+        items {
+          ${PET_GRAPHQL_FIELDS}
         }
-      }`,
+      }
+    }`,
     isDraftMode
   );
   return extractPetEntries(pets);

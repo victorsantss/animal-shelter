@@ -13,7 +13,7 @@ export default async function PetPage({ params }: { params: { slug: string } }) 
         <div className="container px-4 md:px-6">
           <div className="flex flex-col gap-8 items-center justify-center text-center">
             <div className="flex flex-col gap-4">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">{petInfo.name}</h2>
+              <h2 className="font-dancing text-3xl font-bold sm:text-5xl text-palette-dark-red">{petInfo.name}</h2>
               <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                 {petInfo.description}
               </p>

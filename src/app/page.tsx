@@ -38,10 +38,7 @@ export default async function Home() {
           <div className="container px-4 md:px-6 space-y-12">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground">
-                  Últimos Resgatados
-                </div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Conheça Nossos Animais para Adoção</h2>
+                <h2 className="font-dancing text-3xl font-bold tracking-tighter sm:text-5xl text-palette-dark-red">Conheça Nossos Animais para Adoção</h2>
                 <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   Explore nossa seleção de animais resgatados que estão em busca de lares permanentes. Cada um tem uma história única e está esperando para trazer alegria para sua vida.
                 </p>
@@ -61,7 +58,7 @@ export default async function Home() {
                   <p className="text-sm text-muted-foreground line-clamp-4">{pet.description}</p>
                   <Link
                     href={`/adotar/${pet.slug}`}
-                    className="inline-flex h-8 items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+                    className="inline-flex h-8 items-center justify-center rounded-md bg-palette-dark-orange px-4 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-palette-dark-orange/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
                     prefetch={false}
                   >
                     Adote {pet.name}
@@ -84,10 +81,7 @@ export default async function Home() {
           <div className="container px-4 md:px-6 space-y-12">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground">
-                  Envolva-se
-                </div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Maneiras de Apoiar Nossa Missão</h2>
+                <h2 className="font-dancing text-3xl font-bold tracking-tighter sm:text-5xl text-palette-dark-red">Maneiras de Apoiar Nossa Missão</h2>
                 <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   Existem muitas maneiras de ajudar a fazer a diferença na vida dos animais resgatados. Seja voluntário, ofereça lar temporário ou doe para apoiar nossos esforços.
                 </p>
@@ -104,7 +98,7 @@ export default async function Home() {
                 </p>
                 <Link
                   href="#"
-                  className="inline-flex h-8 items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+                  className="inline-flex h-8 items-center justify-center rounded-md bg-palette-dark-orange px-4 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-palette-dark-orange/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
                   prefetch={false}
                 >
                   Saiba Mais
@@ -118,7 +112,7 @@ export default async function Home() {
                 <p className="text-sm text-muted-foreground">Ofereça um lar temporário para um animal resgatado e ajude-o a se preparar para a adoção.</p>
                 <Link
                   href="#"
-                  className="inline-flex h-8 items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+                  className="inline-flex h-8 items-center justify-center rounded-md bg-palette-dark-orange px-4 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-palette-dark-orange/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
                   prefetch={false}
                 >
                   Saiba Mais
@@ -134,7 +128,7 @@ export default async function Home() {
                 </p>
                 <Link
                   href="#"
-                  className="inline-flex h-8 items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+                  className="inline-flex h-8 items-center justify-center rounded-md bg-palette-dark-orange px-4 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-palette-dark-orange/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
                   prefetch={false}
                 >
                   Doe Agora
@@ -147,10 +141,7 @@ export default async function Home() {
           <div className="container px-4 md:px-6 space-y-12">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground">
-                  Nosso Impacto
-                </div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                <h2 className="font-dancing text-3xl font-bold tracking-tighter sm:text-5xl text-palette-dark-red">
                   Fazendo a Diferença, Um Resgate de Cada Vez
                 </h2>
                 <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
@@ -161,7 +152,7 @@ export default async function Home() {
             <div className="mx-auto grid items-start gap-8 sm:max-w-4xl sm:grid-cols-2 md:gap-12 lg:max-w-5xl lg:grid-cols-3">
               <div className="grid gap-1">
                 <div className="flex flex-col gap-2 items-center">
-                  <PawPrintIcon className="w-14 h-14 text-primary" />
+                  <PawPrintIcon className="w-14 h-14" />
                   <h3 className="text-lg font-bold">Resgate & Reabilitação</h3>
                 </div>
                 <p className="text-sm text-muted-foreground">
@@ -170,7 +161,7 @@ export default async function Home() {
               </div>
               <div className="grid gap-1">
                 <div className="flex flex-col gap-2 items-center">
-                  <DogIcon className="w-14 h-14 text-primary" />
+                  <DogIcon className="w-14 h-14" />
                   <h3 className="text-lg font-bold">Cuidados Veterinários</h3>
                 </div>
                 <p className="text-sm text-muted-foreground">
@@ -179,7 +170,7 @@ export default async function Home() {
               </div>
               <div className="grid gap-1">
                 <div className="flex flex-col gap-2 items-center">
-                  <SchoolIcon className="w-14 h-14 text-primary" />
+                  <SchoolIcon className="w-14 h-14" />
                   <h3 className="text-lg font-bold">Educação Comunitária</h3>
                 </div>
                 <p className="text-sm text-muted-foreground">

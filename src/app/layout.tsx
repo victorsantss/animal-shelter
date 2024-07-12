@@ -1,20 +1,20 @@
-import { Inter } from 'next/font/google'
+import { Inter, Dancing_Script } from 'next/font/google'
 import { cn } from '@/lib/utils'
 import './globals.css'
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { Metadata } from 'next'
 
-const fontHeading = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-heading',
-})
-
 const fontBody = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-body',
+})
+
+const fontDancing = Dancing_Script({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-dancing',
 })
 
 export const metadata: Metadata = {
@@ -29,8 +29,8 @@ export default function Layout({ children }: Readonly<{
       <body
         className={cn(
           'antialiased',
-          fontHeading.variable,
-          fontBody.variable
+          fontBody.variable,
+          fontDancing.variable,
         )}
       >
         <Header />
