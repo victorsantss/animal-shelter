@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export function HomeHero() {
   return (
-    <section className="w-full pt-12 md:pt-24 lg:pt-32">
+    <section className="w-full pt-12 pb-5 md:pt-24 lg:pt-32">
       <div className="container px-4 md:px-6 grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
         <Image
           src="https://images.unsplash.com/photo-1594004844563-536a03a6e532?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -18,7 +18,7 @@ export function HomeHero() {
               Dando uma Segunda Chance aos Animais Resgatados
             </h1>
             <p className="max-w-[600px] text-muted-foreground md:text-xl">
-              No Patas da Esperança, nossa missão é fornecer um ambiente seguro e amoroso para animais abandonados e abusados, e encontrar lares permanentes para eles.
+              No Patas e Focinhos, nossa missão é fornecer um ambiente seguro e amoroso para animais abandonados e abusados, e encontrar lares permanentes para eles.
             </p>
           </div>
           <div className="flex flex-col gap-2 min-[400px]:flex-row">

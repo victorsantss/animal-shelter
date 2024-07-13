@@ -1,4 +1,5 @@
 import { Pet } from "@/app/page";
+import { AdoptionForm } from "@/components/AdoptionForm";
 import { Slider } from "@/components/Slider";
 import { getPet } from "@/lib/api";
 
@@ -25,6 +26,9 @@ export default async function PetPage({ params }: { params: { slug: string } }) 
                 <span className="text-lg font-bold">{(petType)}</span>
               </div>
             </div>
+
+            <AdoptionForm />
+
             <div className="flex w-full max-w-5xl">
               <Slider media={petMedia} />
             </div>

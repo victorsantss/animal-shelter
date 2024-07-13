@@ -18,7 +18,7 @@ const fontDancing = Dancing_Script({
 })
 
 export const metadata: Metadata = {
-  title: 'Patas da Esperança',
+  title: 'Patas e Focinhos',
 }
 
 export default function Layout({ children }: Readonly<{
