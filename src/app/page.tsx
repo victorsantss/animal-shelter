@@ -55,7 +55,7 @@ export default async function Home() {
                     className="aspect-square overflow-hidden rounded-lg object-cover self-center"
                   />
                   <h3 className="text-lg font-bold">{pet.name} - {pet.age}</h3>
-                  <p className="text-sm text-muted-foreground line-clamp-4">{pet.description}</p>
+                  <p className="text-sm text-justify text-muted-foreground line-clamp-4">{pet.description}</p>
                   <Link
                     href={`/adotar/${pet.slug}`}
                     className="inline-flex h-8 items-center justify-center rounded-md bg-palette-dark-orange px-4 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-palette-dark-orange/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
@@ -87,13 +87,13 @@ export default async function Home() {
                 </p>
               </div>
             </div>
-            <div className="mx-auto grid items-start gap-8 sm:max-w-4xl sm:grid-cols-2 md:gap-12 lg:max-w-5xl lg:grid-cols-3">
-              <div className="flex flex-col gap-1">
+            <div className="mx-auto grid gap-8 sm:max-w-4xl sm:grid-cols-2 md:gap-12 lg:max-w-5xl lg:grid-cols-3">
+              <div className="flex flex-col gap-1 justify-between">
                 <div className="flex flex-col items-center">
                   <VoteIcon className="w-14 h-14 text-primary" />
                   <h3 className="text-lg font-bold">Voluntário</h3>
                 </div>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-muted-foreground text-justify">
                   Junte-se à nossa equipe de voluntários dedicados e ajude a cuidar dos nossos animais resgatados.
                 </p>
                 <Link
@@ -104,12 +104,12 @@ export default async function Home() {
                   Saiba Mais
                 </Link>
               </div>
-              <div className="flex flex-col gap-1">
+              <div className="flex flex-col gap-1 justify-between">
                 <div className="flex flex-col items-center">
                   <FanIcon className="w-14 h-14 text-primary" />
                   <h3 className="text-lg font-bold">Lar Temporário</h3>
                 </div>
-                <p className="text-sm text-muted-foreground">Ofereça um lar temporário para um animal resgatado e ajude-o a se preparar para a adoção.</p>
+                <p className="text-sm text-muted-foreground text-justify">Ofereça um lar temporário para um animal resgatado e ajude-o a se preparar para a adoção.</p>
                 <Link
                   href="#"
                   className="inline-flex h-8 items-center justify-center rounded-md bg-palette-dark-orange px-4 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-palette-dark-orange/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
@@ -118,12 +118,12 @@ export default async function Home() {
                   Saiba Mais
                 </Link>
               </div>
-              <div className="flex flex-col gap-1">
+              <div className="flex flex-col gap-1 justify-between">
                 <div className="flex flex-col items-center">
                   <GiftIcon className="w-14 h-14 text-primary" />
                   <h3 className="text-lg font-bold">Doação</h3>
                 </div>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-muted-foreground text-justify">
                   Suas doações nos ajudam a fornecer cuidados médicos, alimentação e abrigo para os animais.
                 </p>
                 <Link
